@@ -1,22 +1,44 @@
+$primary: #2c2c37;
+$light: #e4e6ea;
+$success: #655fc5;
+$list-group-bg: transparent;
+$list-group-color: #6c757d;
+$list-group-item-padding-y: 15px;
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-$primary: #2C2C37;
-$light : #E4E6EA;
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
-
-@mixin logospan ($opacity) {
-    display: inline-block;
-    width: 7px;
-    height: 100%;
-    background-color:#655FC5;
-    opacity: $opacity;
-    height: 30px;
-    margin: 0 2px;
+@mixin logospan($opacity) {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  background-color: $success;
+  opacity: $opacity;
+  height: 30px;
+  margin: 0 2px;
 }
-$logo: ("0":1,"1":0.6,"2":0.4);
+$logo: (
+  "0": 1,
+  "1": 0.6,
+  "2": 0.4,
+);
 
-
-@each $key ,$var in $logo {
-    .logo-item-#{$key} {
-        @include logospan($var)
+@each $key, $var in $logo {
+  .logo-item-#{$key} {
+    @include logospan($var);
+  }
+}
+.bords-list {
+  .list-group-item {
+    border: none !important;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    &:hover{
+        background-color: #665fc522;
     }
+    &.selected{
+        background-color: $success;
+        font-weight: bold;
+        color: $light;
+    }
+  }
+
 }
