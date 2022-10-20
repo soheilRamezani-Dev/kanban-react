@@ -1,0 +1,62 @@
+$primary: #2c2c37;
+$light: #e4e6ea;
+$success: #655fc5;
+$dark: #21222D;
+$list-group-bg: transparent;
+$list-group-color: #6c757d;
+$list-group-item-padding-y: 15px;
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+html,body,#root,.container-fluid,.row,.navbar{
+    height: 100%;
+}
+
+@mixin logospan($opacity) {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  background-color: $success;
+  opacity: $opacity;
+  height: 30px;
+  margin: 0 2px;
+}
+$logo: (
+  "0": 1,
+  "1": 0.6,
+  "2": 0.4,
+);
+
+@each $key, $var in $logo {
+  .logo-item-#{$key} {
+    @include logospan($var);
+  }
+}
+.bords-list {
+  .list-group-item {
+    border: none !important;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    &:hover{
+        background-color: #665fc522;
+    }
+    &.selected{
+        background-color: $success;
+        font-weight: bold;
+        color: $light;
+    }
+  }
+
+}
+.mode-toggle{
+    width: 45px;
+    height: 23px;
+    border-radius: 10px;
+    cursor: pointer;
+    .toggler{
+        width: 16px;
+        height: 16px;
+        position: relative;
+        right: -25px;
+        top: 2px;
+    }
+}
