@@ -2,3 +2,21 @@
 $primary: #2C2C37;
 $light : #E4E6EA;
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+@mixin logospan ($opacity) {
+    display: inline-block;
+    width: 7px;
+    height: 100%;
+    background-color:#655FC5;
+    opacity: $opacity;
+    height: 30px;
+    margin: 0 2px;
+}
+$logo: ("0":1,"1":0.6,"2":0.4);
+
+
+@each $key ,$var in $logo {
+    .logo-item-#{$key} {
+        @include logospan($var)
+    }
+}
