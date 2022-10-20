@@ -8,7 +8,7 @@ import HideSidebarButton from "./HideSidebarButton";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar col-lg-2 bg-primary text-light p-0 d-flex flex-column justify-content-between">
+    <div className="sidebar col-lg-2 bg-primary text-light p-0 d-flex flex-column justify-content-between border border-lightgray">
       <div>
         <Logo />
         <SidebarTitle />

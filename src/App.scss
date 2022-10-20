@@ -2,9 +2,13 @@ $primary: #2c2c37;
 $light: #e4e6ea;
 $success: #655fc5;
 $dark: #21222D;
+$lightgray:rgba(164, 164, 164, 0.152);
+
+
 $list-group-bg: transparent;
 $list-group-color: #6c757d;
 $list-group-item-padding-y: 15px;
+$btn-border-radius: 30px;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 html,body,#root,.container-fluid,.row,.navbar{
@@ -59,4 +63,7 @@ $logo: (
         right: -25px;
         top: 2px;
     }
+}
+.border-lightgray{
+  border-color: $lightgray !important;
 }
