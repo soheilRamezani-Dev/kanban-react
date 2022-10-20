@@ -1,10 +1,15 @@
 $primary: #2c2c37;
 $light: #e4e6ea;
 $success: #655fc5;
+$dark: #21222D;
 $list-group-bg: transparent;
 $list-group-color: #6c757d;
 $list-group-item-padding-y: 15px;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+html,body,#root,.container-fluid,.row,.navbar{
+    height: 100%;
+}
 
 @mixin logospan($opacity) {
   display: inline-block;
@@ -41,4 +46,17 @@ $logo: (
     }
   }
 
+}
+.mode-toggle{
+    width: 45px;
+    height: 23px;
+    border-radius: 10px;
+    cursor: pointer;
+    .toggler{
+        width: 16px;
+        height: 16px;
+        position: relative;
+        right: -25px;
+        top: 2px;
+    }
 }
