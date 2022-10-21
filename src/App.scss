@@ -67,3 +67,24 @@ $logo: (
 .border-lightgray{
   border-color: $lightgray !important;
 }
+
+.content-body{
+  overflow-x: auto;
+  white-space: nowrap;
+  height: 100%;
+  .create-column:hover{
+    opacity: 1 !important;
+    transition: 100ms ease-in-out;
+  }
+  .category-column{
+    width: 400px;
+    flex-shrink: 0;
+    .category-icon{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      background-color: #655fc5;
+    }
+  }
+}
+
