@@ -1,4 +1,4 @@
-import ModalInput from "./ModalInput";
+import ModalInput from "./../../ModalInput";
 import ModalTextarea from "./ModalTextarea";
 import ModalAddSubtask from "./ModalAddSubtask";
 import ModalSelectStatus from "./../../ModalSelectStatus";
