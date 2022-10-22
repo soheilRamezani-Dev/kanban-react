@@ -8,6 +8,7 @@ $input-bg: transparent;
 $form-select-font-size-lg: 1rem;
 $modal-header-border-width: 0;
 $modal-header-padding-y:10px;
+$form-check-padding-start:0;
 
 $list-group-bg: transparent;
 $list-group-color: #6c757d;
@@ -95,4 +96,13 @@ $logo: (
 .modal-body{
   padding-top: 0 !important;
 }
+
+
+  input:checked ~ .form-check-label>small{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+  }
+
+
 

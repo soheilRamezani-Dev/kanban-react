@@ -1,7 +1,7 @@
 import ModalInput from "./ModalInput";
 import ModalTextarea from "./ModalTextarea";
 import ModalAddSubtask from "./ModalAddSubtask";
-import ModalSelectStatus from "./ModalSelectStatus";
+import ModalSelectStatus from "./../../ModalSelectStatus";
 
 const ModalForm = () => {
   return (
@@ -9,8 +9,10 @@ const ModalForm = () => {
       <ModalInput title="Title" id="title" />
       <ModalTextarea title="Description" id="description" />
       <ModalAddSubtask />
-      <ModalSelectStatus/>
-      
+      <div className="m-2">
+        <ModalSelectStatus />
+      </div>
+
       <div className="mt-4">
         <button className="m-2 p-2 rounded-pill text-white bg-success w-100 text-center">
           + Create Task
