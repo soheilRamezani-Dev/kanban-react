@@ -3,7 +3,11 @@ $light: #e4e6ea;
 $success: #655fc5;
 $dark: #21222D;
 $lightgray:rgba(164, 164, 164, 0.152);
-
+$input-border-color: rgba(128, 128, 128, 0.38);
+$input-bg: transparent;
+$form-select-font-size-lg: 1rem;
+$modal-header-border-width: 0;
+$modal-header-padding-y:10px;
 
 $list-group-bg: transparent;
 $list-group-color: #6c757d;
@@ -86,5 +90,9 @@ $logo: (
       background-color: #655fc5;
     }
   }
+}
+
+.modal-body{
+  padding-top: 0 !important;
 }
 
