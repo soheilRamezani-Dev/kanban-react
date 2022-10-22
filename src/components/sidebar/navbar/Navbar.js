@@ -1,4 +1,3 @@
-import { BsCardList } from "react-icons/bs";
 import NavItem from "./NavItem";
 
 const Navbar = () => {
