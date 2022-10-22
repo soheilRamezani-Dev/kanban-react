@@ -2,7 +2,7 @@ import { BsCardList } from "react-icons/bs";
 
 const NewBoardButton = () => {
   return (
-    <div className="new-bord p-3 text-success">
+    <div className="new-bord p-3 text-success" role="button">
       <span className="board-item-icon">
         <BsCardList size="1.5em" />
       </span>
