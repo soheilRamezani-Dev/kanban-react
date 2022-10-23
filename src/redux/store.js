@@ -1,7 +1,7 @@
 
 import { createStore } from "redux";
-import nightModeReducer from "./reducer/nightModeReducer";
-
-const store = createStore(nightModeReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import Reducer from "./reducer/reducer";
+const store = createStore(Reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+console.log(store.getState());
 
 export default store;

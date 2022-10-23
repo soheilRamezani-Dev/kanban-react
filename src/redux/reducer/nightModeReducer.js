@@ -1,11 +1,11 @@
 import actionsType from "../actionsType";
 
-const initial = { mode: "sun" };
+const initial = "sun";
 
-const nightModeReducer = (state = initial, action) => {
-  if (action.type === actionsType.TOGGLE_MODE) return {mode:action.payload.mode};
+const mode = (state = initial, action) => {
+  if (action.type === actionsType.TOGGLE_MODE) return action.payload.mode;
   else {return state}
 
 };
 
-export default nightModeReducer;
+export default mode;
