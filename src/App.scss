@@ -1,17 +1,18 @@
-$primary: #2c2c37;
-$light: #e4e6ea;
+
+
+
 $success: #655fc5;
-$dark: #21222D;
-$lightgray:rgba(164, 164, 164, 0.152);
+$lightgray: rgba(164, 164, 164, 0.152);
+
 $input-border-color: rgba(128, 128, 128, 0.38);
 $input-bg: transparent;
 $form-select-font-size-lg: 1rem;
 $modal-header-border-width: 0;
-$modal-header-padding-y:10px;
-$form-check-padding-start:0;
+$modal-header-padding-y: 10px;
+$form-check-padding-start: 0;
 $form-check-input-checked-bg-color: $success;
 $form-check-input-border: 1px white;
-$form-check-input-bg:gray;
+$form-check-input-bg: gray;
 
 $list-group-bg: transparent;
 $list-group-color: #6c757d;
@@ -19,9 +20,74 @@ $list-group-item-padding-y: 15px;
 $btn-border-radius: 30px;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-html,body,#root,.container-fluid,.row,.navbar{
-    height: 100%;
+html,
+body,
+#root,
+.container-fluid,
+.row,
+.navbar {
+  height: 100%;
 }
+
+$themes : (
+  night-mode:(
+    primary: #2c2c37,
+    secondary:#6c757d,
+    light: #e4e6ea,
+    dark: #21222d,
+    white: white
+  ),
+  sun-mode:(
+  primary: white,
+  secondary:#6c757d,
+    light: #515151,
+    dark: #665fc520,
+    white: black
+  )
+);
+
+@mixin themed($input) {
+  @each $theme, $map in $themes {
+    .#{$theme} &{
+        @each $key,$value in $input {
+            #{$key}:map-get($map,$value) !important;
+        }
+    }
+  }
+}
+
+.text-primary{
+  @include themed((color:primary))
+}
+.bg-primary{
+  @include themed((background-color:primary))
+}
+.text-secondary{
+  @include themed((color:secondary))
+}
+.bg-secondary{
+  @include themed((background-color:secondary))
+}
+.text-light{
+  @include themed((color:light))
+}
+.bg-light{
+  @include themed((background-color:light))
+}
+.text-dark{
+  @include themed((color:dark))
+}
+.bg-dark{
+  @include themed((background-color:dark))
+}
+.text-white{
+  @include themed((color:white))
+}
+.bg-white{
+  @include themed((background-color:white))
+}
+
+
 
 @mixin logospan($opacity) {
   display: inline-block;
@@ -43,60 +109,63 @@ $logo: (
     @include logospan($var);
   }
 }
+.night-mode {
+  background-color: black;
+  color: white;
+}
 .bords-list {
   .list-group-item {
     border: none !important;
     border-radius: 0 30px 30px 0;
     cursor: pointer;
-    &:hover{
-        background-color: #665fc522;
+    &:hover {
+      background-color: #665fc522;
     }
-    &.selected{
-        background-color: $success;
-        font-weight: bold;
-        color: $light;
+    &.selected {
+      background-color: $success;
+      font-weight: bold;
+      color: $light;
     }
   }
-
 }
-.mode-toggle{
-    width: 45px;
-    height: 23px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: $lightgray;
-    .toggler{
-        width: 16px;
-        height: 16px;
-        position: relative;
-        right: -3px;
-        top: 2px;
-        transition: ease-in-out 100ms;
-    }
+.mode-toggle {
+  width: 45px;
+  height: 23px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $lightgray;
+  .toggler {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    right: -3px;
+    top: 2px;
+    transition: ease-in-out 100ms;
+  }
 }
-.night{
+.night {
   background-color: $success;
-  .toggler{
+  .toggler {
     right: -25px;
     transition: ease-in-out 100ms;
   }
 }
-.border-lightgray{
+.border-lightgray {
   border-color: $lightgray !important;
 }
 
-.content-body{
+.content-body {
   overflow-x: auto;
   white-space: nowrap;
   height: 100%;
-  .create-column:hover{
+  .create-column:hover {
     opacity: 1 !important;
     transition: 100ms ease-in-out;
   }
-  .category-column{
+  .category-column {
     width: 400px;
     flex-shrink: 0;
-    .category-icon{
+    .category-icon {
       width: 15px;
       height: 15px;
       display: inline-block;
@@ -105,16 +174,13 @@ $logo: (
   }
 }
 
-.modal-body{
+.modal-body {
   padding-top: 0 !important;
 }
 
-
-  input:checked ~ .form-check-label>small{
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-  }
-
-
+input:checked ~ .form-check-label > small {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}
 
