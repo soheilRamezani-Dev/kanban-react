@@ -12,9 +12,15 @@ export const changeBoard = (index) => {
     payload: { index },
   };
 };
-export const checkSubtask = (columnId,taskId,subtaskId) => {
+export const checkSubtask = (columnId, taskId, subtaskId) => {
   return {
     type: actionsType.CHECK_SUBTASK,
-    payload: { columnId,taskId,subtaskId },
+    payload: { columnId, taskId, subtaskId },
+  };
+};
+export const changeColumn = (taskId ,currentColumn, goalColumn) => {
+  return {
+    type: actionsType.CHANGE_COLUMN,
+    payload: {taskId, currentColumn, goalColumn },
   };
 };

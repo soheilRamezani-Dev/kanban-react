@@ -2,12 +2,15 @@ import EditTask from "../editTask/EditTask";
 import { useState } from "react";
 
 const TasksList = ({ tasks, columnId }) => {
+
   const [ModalState, setModalState] = useState({
     editTaskModal: false,
+    columnId: columnId,
     taskId: null,
   });
-  const clickTaskHandler = (index) => {
-    setModalState({taskId:index, editTaskModal:true});
+
+  const clickTaskHandler = (columnId,index) => {
+    setModalState({columnId: columnId, taskId: index, editTaskModal: true });
   };
 
   return (
@@ -18,7 +21,7 @@ const TasksList = ({ tasks, columnId }) => {
             <li
               key={index}
               role="button"
-              onClick={() => clickTaskHandler(index)}
+              onClick={() => clickTaskHandler(columnId,index)}
               className="list-group-item category-column-item bg-primary  my-2 p-4 rounded"
             >
               <h6 className="text-white m-0">{task.tasksName}</h6>
@@ -30,12 +33,17 @@ const TasksList = ({ tasks, columnId }) => {
           );
         })}
       </ul>
-      {ModalState.taskId !== null ? (
+      {ModalState.taskId !== null && ModalState.editTaskModal === true ? (
         <EditTask
+          setModalState={setModalState}
           taskId={ModalState.taskId}
-          columnId={columnId}
+          columnId={ModalState.columnId}
           show={ModalState.editTaskModal}
-          onHide={() => setModalState((state) => {return{...state, editTaskModal:false}})}
+          onHide={() =>
+            setModalState((state) => {
+              return { ...state, editTaskModal: false };
+            })
+          }
         />
       ) : (
         ""

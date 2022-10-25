@@ -4,12 +4,14 @@ import SubTasks from "./editForm/SubTasks";
 import TaskInfo from "./editForm/TaskInfo";
 import { useSelector } from "react-redux";
 
-const EditTask = ({ columnId, taskId, ...props }) => {
+const EditTask = ({setModalState, columnId, taskId, ...props }) => {
   const taskInfo = useSelector((state) =>
-    state.tasks.find((vla) => vla.selected === true)
+    state.tasks.find((val) => val.selected === true)
   ).columns[columnId].tasks[taskId];
-
-
+  console.log(useSelector((state) =>state.tasks.find((val) => val.selected === true)));
+  console.log(columnId);
+  console.log(taskId);
+  
   const subtasksLength = taskInfo.subtasks.length;
   const subtasksCheckedLength = taskInfo.subtasks.filter(
     (val) => val.checked === true
@@ -42,7 +44,7 @@ const EditTask = ({ columnId, taskId, ...props }) => {
                 />
                 <div className="my-5">
                   <h6 className="mb-3">Status</h6>
-                  <ModalSelectStatus />
+                  <ModalSelectStatus setModalState={setModalState} columnId={columnId} taskId={taskId} />
                 </div>
               </div>
             </Modal.Body>
