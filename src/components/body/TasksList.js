@@ -1,30 +1,45 @@
 import EditTask from "../editTask/EditTask";
 import { useState } from "react";
 
-const TasksList = () => {
-  const [editTaskModal, setEditTaskModal] = useState(false);
+const TasksList = ({ tasks, columnId }) => {
+  const [ModalState, setModalState] = useState({
+    editTaskModal: false,
+    taskId: null,
+  });
+  const clickTaskHandler = (index) => {
+    setModalState({taskId:index, editTaskModal:true});
+  };
+
   return (
     <>
       <ul className="list-group m-2">
-        <li role="button" onClick={() => setEditTaskModal(true)} className="list-group-item category-column-item bg-primary  my-2 p-4 rounded">
-          <h6 className="text-white m-0">Build UI for aboarding flow</h6>
-          <sub className="">0 of three substacks</sub>
-        </li>
-        <li className="list-group-item category-column-item bg-primary my-2 p-4 rounded">
-          <h6 className="text-white m-0">Build UI for aboarding flow</h6>
-          <sub className="">0 of three substacks</sub>
-        </li>
-        <li className="list-group-item category-column-item bg-primary my-2 p-4 rounded">
-          <h6 className="text-white m-0">Build UI for aboarding flow</h6>
-          <sub className="">0 of three substacks</sub>
-        </li>
-        <li className="list-group-item category-column-item bg-primary my-2 p-4 rounded">
-          <h6 className="text-white m-0">Build UI for aboarding flow</h6>
-          <sub className="">0 of three substacks</sub>
-        </li>
+        {tasks.map((task, index) => {
+          return (
+            <li
+              key={index}
+              role="button"
+              onClick={() => clickTaskHandler(index)}
+              className="list-group-item category-column-item bg-primary  my-2 p-4 rounded"
+            >
+              <h6 className="text-white m-0">{task.tasksName}</h6>
+              <sub className="">
+                {task.subtasks.filter((val) => val.checked === true).length} of{" "}
+                {task.subtasks.length} substacks
+              </sub>
+            </li>
+          );
+        })}
       </ul>
-
-      <EditTask show={editTaskModal} onHide={() => setEditTaskModal(false)} />
+      {ModalState.taskId !== null ? (
+        <EditTask
+          taskId={ModalState.taskId}
+          columnId={columnId}
+          show={ModalState.editTaskModal}
+          onHide={() => setModalState((state) => {return{...state, editTaskModal:false}})}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };

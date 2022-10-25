@@ -1,12 +1,31 @@
 import TaskCheck from "./TaskCheck";
 
-const SubTasks = () => {
+const SubTasks = ({
+  subtasksList,
+  subtasksLength,
+  subtasksCheckedLength,
+  columnId,
+  taskId,
+}) => {
   return (
     <div className="subtasks mt-5">
-      <h6 className="mb-3">SubTasks (2 of 3)</h6>
-      <TaskCheck title="subtask 1"/>
-      <TaskCheck title="subtask 2"/>
-     
+      <h6 className="mb-3">
+        SubTasks ({subtasksCheckedLength} of {subtasksLength})
+      </h6>
+      {subtasksList.map((val, index) => {
+        return (
+          <div>
+            <TaskCheck
+              key={index}
+              title={val.subtasksName}
+              checked={val.checked}
+              columnId={columnId}
+              taskId={taskId}
+              index={index}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
