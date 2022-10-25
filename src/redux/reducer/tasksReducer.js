@@ -1,100 +1,15 @@
-const initial = [
-  {
-    boardName: "Platform Launch",
-    selected: true,
-    columns: [
-      {
-        columnName: "TODO",
-        tasks: [
-          {
-            tasksName: "Build UI for aboarding flow",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-            ],
-          },
-          {
-            tasksName: "Build UI for search",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-              { subtasksName: "subTask3", checked: true },
-            ],
-          },
-        ],
-      },
-      {
-        columnName: "Doing",
-        tasks: [
-          {
-            tasksName: "design Setting and search pages",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-              { subtasksName: "subTask3", checked: false },
-            ],
-          },
-          {
-            tasksName: "design onboarding flow",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    boardName: "Marketing Plan",
-    selected: false,
-    columns: [
-      {
-        columnName: "TODO",
-        tasks: [
-          {
-            tasksName: "marketing plan for aboarding flow",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-            ],
-          },
-          {
-            tasksName: "marketing plan for search",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-              { subtasksName: "subTask3", checked: true },
-            ],
-          },
-        ],
-      },
-      {
-        columnName: "Doing",
-        tasks: [
-          {
-            tasksName: "marketing plan pages",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-              { subtasksName: "subTask3", checked: false },
-            ],
-          },
-          {
-            tasksName: "marketing plan onboarding flow",
-            subtasks: [
-              { subtasksName: "subTask1", checked: true },
-              { subtasksName: "subTask2", checked: false },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
+import initial from "../../api/tasks_api";
+import actionsType from "../actionsType";
 
 const tasks = (state = initial, action) => {
   switch (action.type) {
+    case actionsType.CHANGE_BOARD : 
+    const newState = [...state];
+    newState.forEach((element,key) => {
+      if(key===action.payload.index) element.selected=true;
+      else element.selected=false;
+    }); 
+    return newState;
     default:
       return state;
   }
