@@ -31,6 +31,7 @@ const changeColumn = (state,taskId, currentColumn, goalColumn) => {
 };
 
 const tasks = (state = initial, action) => {
+  const newState = [...state];
   switch (action.type) {
     case actionsType.CHANGE_BOARD:
       return changeBoadrSelected(state, action.payload.index);
@@ -45,9 +46,12 @@ const tasks = (state = initial, action) => {
       return changeColumn(state,action.payload.taskId,currentColumn, goalColumn);
 
     case actionsType.ADD_BOARD:
-      const newState = [...state];
       newState.forEach((val)=>val.selected=false);
       return [...newState,{boardName:action.payload.boardName,selected:true,columns:[]}]
+    case actionsType.ADD_COLUMN:
+      const newColumnId = newState.find((val) => val.selected === true).columns.length;
+      newState.find((val) => val.selected === true).columns.push({columnName:action.payload.columnName,tasks:[]});
+      return newState;
 
     default:
       return state;

@@ -4,6 +4,7 @@ const actionsType = {
     CHECK_SUBTASK:'CHECK_SUBTASK',
     CHANGE_COLUMN:'CHANGE_COLUMN',
     ADD_BOARD:'ADD_BOARD',
+    ADD_COLUMN:'ADD_COLUMN',
 }
 
 export default actionsType;

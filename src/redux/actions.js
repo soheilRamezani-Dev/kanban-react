@@ -18,15 +18,21 @@ export const checkSubtask = (columnId, taskId, subtaskId) => {
     payload: { columnId, taskId, subtaskId },
   };
 };
-export const changeColumn = (taskId ,currentColumn, goalColumn) => {
+export const changeColumn = (taskId, currentColumn, goalColumn) => {
   return {
     type: actionsType.CHANGE_COLUMN,
-    payload: {taskId, currentColumn, goalColumn },
+    payload: { taskId, currentColumn, goalColumn },
   };
 };
 export const addBoard = (boardName) => {
   return {
     type: actionsType.ADD_BOARD,
-    payload: {boardName },
+    payload: { boardName },
+  };
+};
+export const addColumn = (columnName) => {
+  return {
+    type: actionsType.ADD_COLUMN,
+    payload: { columnName },
   };
 };

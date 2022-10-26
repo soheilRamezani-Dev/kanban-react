@@ -1,10 +1,9 @@
 import NavItem from "./NavItem";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { changeBoard } from "../../../redux/actions";
 
-const Navbar = () => {
-  const boards = useSelector((state) => state.tasks);
+const Navbar = ({boards}) => {
+
   const dispatch = useDispatch();
   const clickHandler = (key) => {
     dispatch(changeBoard(key));

@@ -1,7 +1,7 @@
-const SidebarTitle = () => {
+const SidebarTitle = ({boardsLength}) => {
   return (
     <div className="title p-3 text-secondary">
-      <small>ALL BOARDS (3)</small>
+      <small>ALL BOARDS ({boardsLength})</small>
     </div>
   );
 };

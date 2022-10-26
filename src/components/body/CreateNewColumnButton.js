@@ -15,7 +15,7 @@ const CreateNewColumnButton = () => {
           <h4 className="text-secondary m-0 text-center">+ New Column</h4>
         </div>
       </div>
-      <AddNewColumn  show={modalShow} onHide={() => setModalShow(false)}/>
+      <AddNewColumn setModalShow={setModalShow}  show={modalShow} onHide={() => setModalShow(false)}/>
     </>
   );
 };

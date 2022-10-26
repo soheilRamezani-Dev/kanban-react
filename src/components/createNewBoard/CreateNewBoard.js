@@ -16,6 +16,7 @@ const CreateNewBoard = ({setModalShow,...props}) => {
   const submitHandler = ()=> {
     schema.validate({boardName:inputValue}).then((val)=>{
       setErrors('');
+      setInputValue('')
       dispatch(addBoard(inputValue));
       setModalShow(false);
     }).catch((error)=>{
