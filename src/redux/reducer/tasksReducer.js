@@ -43,6 +43,12 @@ const tasks = (state = initial, action) => {
       const currentColumn = action.payload.currentColumn;
       const goalColumn = action.payload.goalColumn;
       return changeColumn(state,action.payload.taskId,currentColumn, goalColumn);
+
+    case actionsType.ADD_BOARD:
+      const newState = [...state];
+      newState.forEach((val)=>val.selected=false);
+      return [...newState,{boardName:action.payload.boardName,selected:true,columns:[]}]
+
     default:
       return state;
   }

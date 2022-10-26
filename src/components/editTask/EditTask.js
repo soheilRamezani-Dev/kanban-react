@@ -8,9 +8,6 @@ const EditTask = ({setModalState, columnId, taskId, ...props }) => {
   const taskInfo = useSelector((state) =>
     state.tasks.find((val) => val.selected === true)
   ).columns[columnId].tasks[taskId];
-  console.log(useSelector((state) =>state.tasks.find((val) => val.selected === true)));
-  console.log(columnId);
-  console.log(taskId);
   
   const subtasksLength = taskInfo.subtasks.length;
   const subtasksCheckedLength = taskInfo.subtasks.filter(

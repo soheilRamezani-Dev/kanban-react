@@ -24,3 +24,9 @@ export const changeColumn = (taskId ,currentColumn, goalColumn) => {
     payload: {taskId, currentColumn, goalColumn },
   };
 };
+export const addBoard = (boardName) => {
+  return {
+    type: actionsType.ADD_BOARD,
+    payload: {boardName },
+  };
+};

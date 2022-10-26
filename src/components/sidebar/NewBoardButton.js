@@ -13,7 +13,7 @@ const NewBoardButton = () => {
         </span>
         <span onClick={() => setModalShow(true)} role="button" className="ps-2">+ Create New Board</span>
       </div>
-      <CreateNewBoard show={modalShow} onHide={() => setModalShow(false)} />
+      <CreateNewBoard setModalShow={setModalShow} show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 };

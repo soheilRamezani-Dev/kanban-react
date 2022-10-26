@@ -1,4 +1,7 @@
-const ModalInput = ({title,id}) => {
+const ModalInput = ({ title, id,inputValue, setInputValue}) => {
+  const inputChangeHandler = (e) => {
+    setInputValue(e.target.value);
+  };
   return (
     <div className="mb-3">
       <label htmlFor={id}>{title}</label>
@@ -6,6 +9,8 @@ const ModalInput = ({title,id}) => {
         id={id}
         className="form-control my-2 text-white"
         placeholder="e.g Take Coffee Breack"
+        value={inputValue}
+        onChange={inputChangeHandler}
       />
     </div>
   );

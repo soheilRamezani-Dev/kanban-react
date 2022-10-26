@@ -3,6 +3,7 @@ const actionsType = {
     CHANGE_BOARD:'CHANGE_BOARD',
     CHECK_SUBTASK:'CHECK_SUBTASK',
     CHANGE_COLUMN:'CHANGE_COLUMN',
+    ADD_BOARD:'ADD_BOARD',
 }
 
 export default actionsType;
