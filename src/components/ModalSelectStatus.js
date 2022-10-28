@@ -1,25 +1,34 @@
 import { useSelector, useDispatch } from "react-redux";
 import { changeColumn } from "../redux/actions";
 
-const ModalSelectStatus = ({setModalState, columnId ,taskId}) => {
-  const selector = useSelector((state) => state.tasks);
-  const columns = selector.find((val) => val.selected === true).columns;
+const ModalSelectStatus = ({
+  columns,
+  formikHandler,
+  setModalState,
+  columnId,
+  taskId,
+}) => {
 
   const dispatch = useDispatch();
   //console.log(columns);
   const columnChangeHandler = (event) => {
     const goalColumn = Number(event.target.value);
     const goalTaskId = columns[goalColumn].tasks.length;
-    setModalState({editTaskModal: true,columnId:goalColumn,taskId:goalTaskId})
-    dispatch(changeColumn(taskId,columnId,goalColumn));
+    setModalState({
+      editTaskModal: true,
+      columnId: goalColumn,
+      taskId: goalTaskId,
+    });
+    dispatch(changeColumn(taskId, columnId, goalColumn));
   };
 
   return (
     <select
-      onChange={columnChangeHandler}
-      class="form-select form-select-lg text-white bg-primary"
+      name="status"
+      onChange={formikHandler || columnChangeHandler}
+      class="form-select form-select-lg text-white bg-primary mt-4"
       aria-label=".form-select-sm example"
-      role="button"
+      //role="button"
     >
       {columns.map((val, index) => {
         return (

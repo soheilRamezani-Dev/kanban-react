@@ -36,3 +36,9 @@ export const addColumn = (columnName) => {
     payload: { columnName },
   };
 };
+export const addTask = (formInfo) => {
+  return {
+    type: actionsType.ADD_TASK,
+    payload: { formInfo },
+  };
+};

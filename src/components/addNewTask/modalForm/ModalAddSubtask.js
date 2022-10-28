@@ -1,13 +1,16 @@
 import { AiOutlineClose } from "react-icons/ai";
 
-const ModalAddSubtask = () => {
+const ModalAddSubtask = ({ formikHandler, inputValue, title, id }) => {
   return (
-    <div className="mb-3">
-      <label>SubTasks</label>
+    <div className="mt-3">
+      <label>{title}</label>
       <div className="d-flex">
         <input
+          name={`${id}[0]`}
+          value = {inputValue[0]}
           className="form-control m-2 text-white"
           placeholder="e.g Take Coffee Breack"
+          onChange={formikHandler}
         />
         <AiOutlineClose
           role="button"
@@ -18,8 +21,11 @@ const ModalAddSubtask = () => {
       </div>
       <div className="d-flex">
         <input
+          name={`${id}[1]`}
+          value = {inputValue[1]}
           className="form-control m-2 text-white"
           placeholder="e.g Take Coffee Breack"
+          onChange={formikHandler}
         />
         <AiOutlineClose
           role="button"

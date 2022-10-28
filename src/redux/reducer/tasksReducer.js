@@ -21,11 +21,17 @@ const checkSubtask = (currentState, columnId, taskId, subtaskId) => {
   return newState;
 };
 
-const changeColumn = (state,taskId, currentColumn, goalColumn) => {
+const changeColumn = (state, taskId, currentColumn, goalColumn) => {
   const newState = [...state];
-  const task = newState.find((val) => val.selected === true).columns[currentColumn].tasks[taskId];
-  newState.find((val) => val.selected === true).columns[currentColumn].tasks.splice(taskId, 1);
-  newState.find((val) => val.selected === true).columns[goalColumn].tasks.push(task);
+  const task = newState.find((val) => val.selected === true).columns[
+    currentColumn
+  ].tasks[taskId];
+  newState
+    .find((val) => val.selected === true)
+    .columns[currentColumn].tasks.splice(taskId, 1);
+  newState
+    .find((val) => val.selected === true)
+    .columns[goalColumn].tasks.push(task);
   console.log(newState);
   return newState;
 };
@@ -43,14 +49,35 @@ const tasks = (state = initial, action) => {
     case actionsType.CHANGE_COLUMN:
       const currentColumn = action.payload.currentColumn;
       const goalColumn = action.payload.goalColumn;
-      return changeColumn(state,action.payload.taskId,currentColumn, goalColumn);
+      return changeColumn(
+        state,
+        action.payload.taskId,
+        currentColumn,
+        goalColumn
+      );
 
     case actionsType.ADD_BOARD:
-      newState.forEach((val)=>val.selected=false);
-      return [...newState,{boardName:action.payload.boardName,selected:true,columns:[]}]
+      newState.forEach((val) => (val.selected = false));
+      return [
+        ...newState,
+        { boardName: action.payload.boardName, selected: true, columns: [] },
+      ];
     case actionsType.ADD_COLUMN:
-      const newColumnId = newState.find((val) => val.selected === true).columns.length;
-      newState.find((val) => val.selected === true).columns.push({columnName:action.payload.columnName,tasks:[]});
+      newState
+        .find((val) => val.selected === true)
+        .columns.push({ columnName: action.payload.columnName, tasks: [] });
+      return newState;
+    case actionsType.ADD_TASK:
+      const { title, description, subtasks, status } = action.payload.formInfo;
+      const subtask = subtasks.map(val=>{return{subtasksName:val}});
+      console.log(status)
+      newState
+        .find((val) => val.selected === true)
+        .columns[Number(status)].tasks.push({
+          tasksName: title,
+          description,
+          subtasks:subtask,
+        });
       return newState;
 
     default:

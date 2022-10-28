@@ -13,6 +13,7 @@ const Header = () => {
         <AddNewTask
         show={modalShow}
         onHide={() => setModalShow(false)}
+        setModalShow={setModalShow}
       />
 
         <FiMoreVertical size="1.5em" />

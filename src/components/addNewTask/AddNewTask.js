@@ -1,7 +1,7 @@
 import { Modal } from "react-bootstrap";
 import ModalForm from "./modalForm/ModalForm";
 import { useSelector } from "react-redux";
-const AddNewTask = (props) => {
+const AddNewTask = ({setModalShow,...props}) => {
     return <Modal
         {...props}
         size="md"
@@ -13,7 +13,7 @@ const AddNewTask = (props) => {
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <h4 className="mt-0">Add New Task</h4>
-              <ModalForm />
+              <ModalForm setModalShow={setModalShow} />
             </Modal.Body>
           </div>
         </div>

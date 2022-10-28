@@ -5,6 +5,7 @@ const actionsType = {
     CHANGE_COLUMN:'CHANGE_COLUMN',
     ADD_BOARD:'ADD_BOARD',
     ADD_COLUMN:'ADD_COLUMN',
+    ADD_TASK:'ADD_TASK',
 }
 
 export default actionsType;
