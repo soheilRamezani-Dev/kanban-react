@@ -1,6 +1,3 @@
-
-
-
 $success: #655fc5;
 $lightgray: rgba(164, 164, 164, 0.152);
 
@@ -29,65 +26,103 @@ body,
   height: 100%;
 }
 
-$themes : (
-  night-mode:(
+$themes: (
+  night-mode: (
     primary: #2c2c37,
-    secondary:#6c757d,
+    secondary: #6c757d,
     light: #e4e6ea,
     dark: #21222d,
-    white: white
+    white: white,
   ),
-  sun-mode:(
-  primary: white,
-  secondary:#6c757d,
+  sun-mode: (
+    primary: white,
+    secondary: #6c757d,
     light: #515151,
     dark: #665fc520,
-    white: black
-  )
+    white: black,
+  ),
 );
 
 @mixin themed($input) {
   @each $theme, $map in $themes {
-    .#{$theme} &{
-        @each $key,$value in $input {
-            #{$key}:map-get($map,$value) !important;
-        }
+    .#{$theme} & {
+      @each $key, $value in $input {
+        #{$key}: map-get($map, $value) !important;
+      }
     }
   }
 }
 
-.text-primary{
-  @include themed((color:primary))
+.text-primary {
+  @include themed(
+    (
+      color: primary,
+    )
+  );
 }
-.bg-primary{
-  @include themed((background-color:primary))
+.bg-primary {
+  @include themed(
+    (
+      background-color: primary,
+    )
+  );
 }
-.text-secondary{
-  @include themed((color:secondary))
+.text-secondary {
+  @include themed(
+    (
+      color: secondary,
+    )
+  );
 }
-.bg-secondary{
-  @include themed((background-color:secondary))
+.bg-secondary {
+  @include themed(
+    (
+      background-color: secondary,
+    )
+  );
 }
-.text-light{
-  @include themed((color:light))
+.text-light {
+  @include themed(
+    (
+      color: light,
+    )
+  );
 }
-.bg-light{
-  @include themed((background-color:light))
+.bg-light {
+  @include themed(
+    (
+      background-color: light,
+    )
+  );
 }
-.text-dark{
-  @include themed((color:dark))
+.text-dark {
+  @include themed(
+    (
+      color: dark,
+    )
+  );
 }
-.bg-dark{
-  @include themed((background-color:dark))
+.bg-dark {
+  @include themed(
+    (
+      background-color: dark,
+    )
+  );
 }
-.text-white{
-  @include themed((color:white))
+.text-white {
+  @include themed(
+    (
+      color: white,
+    )
+  );
 }
-.bg-white{
-  @include themed((background-color:white))
+.bg-white {
+  @include themed(
+    (
+      background-color: white,
+    )
+  );
 }
-
-
 
 @mixin logospan($opacity) {
   display: inline-block;
@@ -184,10 +219,9 @@ input:checked ~ .form-check-label > small {
   color: white;
 }
 
-.input-error{
+.input-error {
   height: 25px;
 }
-.form-select{
+.form-select {
   cursor: pointer;
-  
 }

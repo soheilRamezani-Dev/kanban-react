@@ -17,7 +17,6 @@ const checkSubtask = (currentState, columnId, taskId, subtaskId) => {
   newState.find((val) => val.selected === true).columns[columnId].tasks[
     taskId
   ].subtasks[subtaskId].checked = !prevSubtaskCheck;
-  //console.log(!prevSubtaskCheck);
   return newState;
 };
 
@@ -32,7 +31,6 @@ const changeColumn = (state, taskId, currentColumn, goalColumn) => {
   newState
     .find((val) => val.selected === true)
     .columns[goalColumn].tasks.push(task);
-  console.log(newState);
   return newState;
 };
 
@@ -70,7 +68,6 @@ const tasks = (state = initial, action) => {
     case actionsType.ADD_TASK:
       const { title, description, subtasks, status } = action.payload.formInfo;
       const subtask = subtasks.map(val=>{return{subtasksName:val}});
-      console.log(status)
       newState
         .find((val) => val.selected === true)
         .columns[Number(status)].tasks.push({

@@ -8,7 +8,7 @@ const Body = () => {
   const columns = selector.find((value) => value.selected === true).columns;
 
   return (
-    <div className="content-body text-light p-4 d-flex flex-nowrap">
+    <div className="content-body text-light p-4 d-md-flex flex-nowrap">
       {columns.map((val, index) => {
         return (
           <div key={index} className="category-column">

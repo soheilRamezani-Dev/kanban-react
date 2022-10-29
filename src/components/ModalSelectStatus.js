@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeColumn } from "../redux/actions";
 
 const ModalSelectStatus = ({
@@ -10,7 +10,6 @@ const ModalSelectStatus = ({
 }) => {
 
   const dispatch = useDispatch();
-  //console.log(columns);
   const columnChangeHandler = (event) => {
     const goalColumn = Number(event.target.value);
     const goalTaskId = columns[goalColumn].tasks.length;

@@ -18,7 +18,6 @@ const AddNewColumn = ({setModalShow,...props}) => {
       setColumnInput('');
       setModalShow(false);
       dispatch(addColumn(columnInput));
-      console.log('fnvvd');
     }).catch((e)=>{
       setColumnInputErrors(e.message);
     });

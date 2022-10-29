@@ -26,7 +26,6 @@ const ModalAddSubtask = ({
       setSubtaskState(newState);
       const subtaskValues=formikValues.subtasks;
       subtaskValues.splice(index, 1);
-      console.log(subtaskValues);
       setFieldValue("subtasks", subtaskValues);
     }
   };
