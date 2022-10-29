@@ -22,8 +22,6 @@ const Header = ({setSidebarShow}) => {
           onHide={() => setModalShow(false)}
           setModalShow={setModalShow}
         />
-
-        <FiMoreVertical size="1.5em" />
       </div>
     </div>
   );

@@ -192,7 +192,6 @@ $logo: (
 .content-body {
   overflow-x: auto;
   white-space: nowrap;
-  height: 100%;
   .create-column:hover {
     opacity: 1 !important;
     transition: 100ms ease-in-out;
@@ -230,13 +229,32 @@ input:checked ~ .form-check-label > small {
   transition: width 200ms ease-out;
 }
 
-.sidebar.unshow {
-  width: 0 !important;
-  transition: width 200ms ease-out;
-  overflow: hidden;
-  border: none !important;
+@media screen and (min-width:768px) {
+  .sidebar.unshow {
+    width: 0 !important;
+    transition: width 200ms ease-out;
+    overflow: hidden;
+    border: none !important;
+  }
+  .right-content.sidebar-unshow {
+    width: 100% !important;
+    transition: width 200ms ease-out;
+  }  
+  .content-body{
+    height: 100%;
+  }
 }
-.right-content.sidebar-unshow {
-  width: 100% !important;
-  transition: width 200ms ease-out;
+@media screen and (max-width:767px) {
+  .sidebar{
+    max-height: 500px;
+    transition: max-height 400ms ease-out;
+  }
+  .sidebar.unshow {
+    max-height: 0 !important;
+    overflow: hidden;
+    border: none !important;
+  } 
+  .content-body .category-column>div{
+    padding: 20px;
+  }
 }
