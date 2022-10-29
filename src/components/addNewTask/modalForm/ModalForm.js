@@ -61,7 +61,9 @@ const ModalForm = ({setModalShow}) => {
 
       <ModalAddSubtask
         formikHandler={formik.handleChange}
+        formikValues={formik.values}
         inputValue={formik.values.subtasks}
+        setFieldValue={formik.setFieldValue}
         title="SubTask"
         id="subtasks"
       />

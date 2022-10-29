@@ -1,40 +1,63 @@
 import { AiOutlineClose } from "react-icons/ai";
+import { useState } from "react";
 
-const ModalAddSubtask = ({ formikHandler, inputValue, title, id }) => {
+const ModalAddSubtask = ({
+  formikValues,
+  setFieldValue,
+  formikHandler,
+  inputValue,
+  title,
+  id,
+}) => {
+  const [subtaskState, setSubtaskState] = useState([0, 1]);
+
+  const newState = [...subtaskState];
+  const addSubtaskHandler = (e) => {
+    e.preventDefault();
+    newState.push(subtaskState.length);
+    setSubtaskState(newState);
+  };
+
+  const removeSubtaskHandler = (subtaskId) => {
+    const index = newState.indexOf(subtaskId);
+    newState.splice(index, 1);
+    //console.log(subtaskState.length);
+    if (subtaskState.length >= 2) {
+      setSubtaskState(newState);
+      const subtaskValues=formikValues.subtasks;
+      subtaskValues.splice(index, 1);
+      console.log(subtaskValues);
+      setFieldValue("subtasks", subtaskValues);
+    }
+  };
   return (
     <div className="mt-3">
       <label>{title}</label>
-      <div className="d-flex">
-        <input
-          name={`${id}[0]`}
-          value = {inputValue[0]}
-          className="form-control m-2 text-white"
-          placeholder="e.g Take Coffee Breack"
-          onChange={formikHandler}
-        />
-        <AiOutlineClose
-          role="button"
-          className="mt-3"
-          size="1.5em"
-          color="lightgray"
-        />
-      </div>
-      <div className="d-flex">
-        <input
-          name={`${id}[1]`}
-          value = {inputValue[1]}
-          className="form-control m-2 text-white"
-          placeholder="e.g Take Coffee Breack"
-          onChange={formikHandler}
-        />
-        <AiOutlineClose
-          role="button"
-          className="mt-3"
-          size="1.5em"
-          color="lightgray"
-        />
-      </div>
-      <button className="mt-1 m-2 p-2 rounded-pill text-success bg-white w-100 text-center">
+      {subtaskState.map((val, key) => {
+        return (
+          <div key={key} className="d-flex">
+            <input
+              name={`${id}[${key}]`}
+              value={inputValue[key]}
+              className="form-control m-2 text-white"
+              placeholder="e.g Take Coffee Breack"
+              onChange={formikHandler}
+            />
+            <AiOutlineClose
+              role="button"
+              className="mt-3"
+              size="1.5em"
+              color="lightgray"
+              onClick={() => removeSubtaskHandler(key)}
+            />
+          </div>
+        );
+      })}
+
+      <button
+        onClick={addSubtaskHandler}
+        className="mt-1 m-2 p-2 rounded-pill text-success bg-white w-100 text-center"
+      >
         + Add New SubTask
       </button>
     </div>
