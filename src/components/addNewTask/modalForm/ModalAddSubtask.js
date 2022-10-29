@@ -11,11 +11,21 @@ const ModalAddSubtask = ({
 }) => {
   const [subtaskState, setSubtaskState] = useState([0, 1]);
 
+  const subtaskValues = formikValues.subtasks;
   const newState = [...subtaskState];
+  let isAllFieldFull = true;
   const addSubtaskHandler = (e) => {
     e.preventDefault();
-    newState.push(subtaskState.length);
-    setSubtaskState(newState);
+    subtaskState.forEach((element, key) => {
+      console.log(subtaskValues[key]);
+      if (!(subtaskValues[key])) {
+        isAllFieldFull = false;
+      }
+    });
+    if (isAllFieldFull) {
+      newState.push(subtaskState.length);
+      setSubtaskState(newState);
+    }
   };
 
   const removeSubtaskHandler = (subtaskId) => {
@@ -24,7 +34,6 @@ const ModalAddSubtask = ({
     //console.log(subtaskState.length);
     if (subtaskState.length >= 2) {
       setSubtaskState(newState);
-      const subtaskValues=formikValues.subtasks;
       subtaskValues.splice(index, 1);
       setFieldValue("subtasks", subtaskValues);
     }
