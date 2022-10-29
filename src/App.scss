@@ -225,3 +225,18 @@ input:checked ~ .form-check-label > small {
 .form-select {
   cursor: pointer;
 }
+.sidebar{
+  white-space: nowrap;
+  transition: width 200ms ease-out;
+}
+
+.sidebar.unshow {
+  width: 0 !important;
+  transition: width 200ms ease-out;
+  overflow: hidden;
+  border: none !important;
+}
+.right-content.sidebar-unshow {
+  width: 100% !important;
+  transition: width 200ms ease-out;
+}
