@@ -1,0 +1,260 @@
+$success: #655fc5;
+$lightgray: rgba(164, 164, 164, 0.152);
+
+$input-border-color: rgba(128, 128, 128, 0.38);
+$input-bg: transparent;
+$form-select-font-size-lg: 1rem;
+$modal-header-border-width: 0;
+$modal-header-padding-y: 10px;
+$form-check-padding-start: 0;
+$form-check-input-checked-bg-color: $success;
+$form-check-input-border: 1px white;
+$form-check-input-bg: gray;
+
+$list-group-bg: transparent;
+$list-group-color: #6c757d;
+$list-group-item-padding-y: 15px;
+$btn-border-radius: 30px;
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+html,
+body,
+#root,
+.container-fluid,
+.row,
+.navbar {
+  height: 100%;
+}
+
+$themes: (
+  night-mode: (
+    primary: #2c2c37,
+    secondary: #6c757d,
+    light: #e4e6ea,
+    dark: #21222d,
+    white: white,
+  ),
+  sun-mode: (
+    primary: white,
+    secondary: #6c757d,
+    light: #515151,
+    dark: #665fc520,
+    white: black,
+  ),
+);
+
+@mixin themed($input) {
+  @each $theme, $map in $themes {
+    .#{$theme} & {
+      @each $key, $value in $input {
+        #{$key}: map-get($map, $value) !important;
+      }
+    }
+  }
+}
+
+.text-primary {
+  @include themed(
+    (
+      color: primary,
+    )
+  );
+}
+.bg-primary {
+  @include themed(
+    (
+      background-color: primary,
+    )
+  );
+}
+.text-secondary {
+  @include themed(
+    (
+      color: secondary,
+    )
+  );
+}
+.bg-secondary {
+  @include themed(
+    (
+      background-color: secondary,
+    )
+  );
+}
+.text-light {
+  @include themed(
+    (
+      color: light,
+    )
+  );
+}
+.bg-light {
+  @include themed(
+    (
+      background-color: light,
+    )
+  );
+}
+.text-dark {
+  @include themed(
+    (
+      color: dark,
+    )
+  );
+}
+.bg-dark {
+  @include themed(
+    (
+      background-color: dark,
+    )
+  );
+}
+.text-white {
+  @include themed(
+    (
+      color: white,
+    )
+  );
+}
+.bg-white {
+  @include themed(
+    (
+      background-color: white,
+    )
+  );
+}
+
+@mixin logospan($opacity) {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  background-color: $success;
+  opacity: $opacity;
+  height: 30px;
+  margin: 0 2px;
+}
+$logo: (
+  "0": 1,
+  "1": 0.6,
+  "2": 0.4,
+);
+
+@each $key, $var in $logo {
+  .logo-item-#{$key} {
+    @include logospan($var);
+  }
+}
+.night-mode {
+  background-color: black;
+  color: white;
+}
+.bords-list {
+  .list-group-item {
+    border: none !important;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #665fc522;
+    }
+    &.selected {
+      background-color: $success;
+      font-weight: bold;
+      color: $light;
+    }
+  }
+}
+.mode-toggle {
+  width: 45px;
+  height: 23px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $lightgray;
+  .toggler {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    right: -3px;
+    top: 2px;
+    transition: ease-in-out 100ms;
+  }
+}
+.night {
+  background-color: $success;
+  .toggler {
+    right: -25px;
+    transition: ease-in-out 100ms;
+  }
+}
+.border-lightgray {
+  border-color: $lightgray !important;
+}
+
+.content-body {
+  overflow-x: auto;
+  white-space: nowrap;
+  .create-column:hover {
+    opacity: 1 !important;
+    transition: 100ms ease-in-out;
+  }
+  .category-column {
+    width: 400px;
+    flex-shrink: 0;
+    .category-icon {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      background-color: #655fc5;
+    }
+  }
+}
+
+.modal-body {
+  padding-top: 0 !important;
+}
+
+input:checked ~ .form-check-label > small {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+.input-error {
+  height: 25px;
+}
+.form-select {
+  cursor: pointer;
+}
+.sidebar{
+  white-space: nowrap;
+  transition: width 200ms ease-out;
+}
+
+@media screen and (min-width:768px) {
+  .sidebar.unshow {
+    width: 0 !important;
+    transition: width 200ms ease-out;
+    overflow: hidden;
+    border: none !important;
+  }
+  .right-content.sidebar-unshow {
+    width: 100% !important;
+    transition: width 200ms ease-out;
+  }  
+  .content-body{
+    height: 100%;
+  }
+}
+@media screen and (max-width:767px) {
+  .sidebar{
+    max-height: 500px;
+    transition: max-height 400ms ease-out;
+  }
+  .sidebar.unshow {
+    max-height: 0 !important;
+    overflow: hidden;
+    border: none !important;
+  } 
+  .content-body .category-column>div{
+    padding: 20px;
+  }
+}
